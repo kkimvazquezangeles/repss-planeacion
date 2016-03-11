@@ -44,6 +44,11 @@ picture a {
 	font-size: 10pt;
 }
 
+.has-error {
+    border-color: red !important;
+    border-style: solid !important;
+}
+
 .form-1 {
     /* Size & position */
     width: 300px;
@@ -242,6 +247,12 @@ td {
     text-align: center;
     border-top-width: thick;
 }
+
+ .msg-error {
+     font-size: 9pt;
+     font-family: sans-serif;
+     color: red;
+ }
 
 @media screen and (max-width: 400px) {
     .contenedor {

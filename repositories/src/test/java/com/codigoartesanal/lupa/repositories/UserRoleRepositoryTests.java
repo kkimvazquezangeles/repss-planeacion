@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.Set;
 
 /**
- * Created by betuzo on 25/01/15.
+ * Created by kkimvazquezangeles on 25/01/15.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {PersistenceConfig.class})

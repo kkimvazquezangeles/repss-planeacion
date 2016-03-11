@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.Map;
 
 /**
- * Created by betuzo on 8/05/15.
+ * Created by kkimvazquezangeles on 8/05/15.
  */
 @ActiveProfiles(value = "test")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,7 +24,7 @@ public class UserServiceTest {
 
     @Test
     public void testFindByUsername() {
-        Map<String, Object> userMap = userService.findByUsername("jsoto");
+        Map<String, Object> userMap = userService.findByUsername("jperez@tu.me");
         Assert.assertNotNull(userMap);
     }
 }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 /**
- * Created by betuzo on 18/02/16.
+ * Created by kkimvazquezangeles on 18/02/16.
  */
 @Service
 public class UserTokenServiceImpl implements UserTokenService {

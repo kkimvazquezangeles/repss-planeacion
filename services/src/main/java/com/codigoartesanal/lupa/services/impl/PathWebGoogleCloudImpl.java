@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 /**
- * Created by betuzo on 16/01/16.
+ * Created by kkimvazquezangeles on 16/01/16.
  */
 @Service
 @Profile("googlestorage")

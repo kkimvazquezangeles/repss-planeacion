@@ -44,9 +44,7 @@ define([
 					Session.set('authenticated', false);
 					Session.set('username', '');
                     $.removeCookie('auth_token')
-					new ModalGenericView({
-						message: 'Usuario y/o contraseña incorrecta'
-					});
+                    $('#msg-error').show();
 				}
 			});
 		},

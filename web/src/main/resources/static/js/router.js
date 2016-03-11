@@ -18,9 +18,9 @@ define([
         var Router = BaseRouter.extend({
 
         routes: {
-            '':                             'main',
-            '/':                            'main',
-            '/#':                           'main',
+            '':                             'login',
+            '/':                            'login',
+            '/#':                           'login',
             'login':                        'login',
             'signup':                       'signup',
             'token/:token':                 'token',
@@ -106,7 +106,6 @@ define([
         admin: function() {
             var view = new PerfilAdminView();
             this.changeView(view);
-            new MainAdminNavView();
         },
 
         adminPerfil: function() {

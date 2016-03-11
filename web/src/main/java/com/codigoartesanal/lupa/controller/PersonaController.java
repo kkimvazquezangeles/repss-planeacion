@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by betuzo on 22/05/15.
+ * Created by kkimvazquezangeles on 22/05/15.
  */
 @Controller
 @RequestMapping("/persona")
@@ -45,7 +45,7 @@ public class PersonaController {
             value = { "" },
             method = {RequestMethod.GET},
             produces = {"application/json;charset=UTF-8"})
-    public List<Map<String, Object>> listJugadorByUser(User user) {
+    public Map<String, Object> listJugadorByUser(User user) {
         return personaService.listJugadorByAdmin(user);
     }
 

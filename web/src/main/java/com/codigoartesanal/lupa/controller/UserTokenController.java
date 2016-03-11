@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Map;
 
 /**
- * Created by betuzo on 18/02/16.
+ * Created by kkimvazquezangeles on 18/02/16.
  */
 @Controller
 @RequestMapping("/usertoken")

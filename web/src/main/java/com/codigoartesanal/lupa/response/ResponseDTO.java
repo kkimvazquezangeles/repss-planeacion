@@ -1,7 +1,7 @@
 package com.codigoartesanal.lupa.response;
 
 /**
- * Created by betuzo on 9/04/15.
+ * Created by kkimvazquezangeles on 9/04/15.
  */
 public class ResponseDTO {
     public static final String CODE_SUCCESS                  = "success";

@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.io.*;
 
 /**
- * Created by betuzo on 15/01/16.
+ * Created by kkimvazquezangeles on 15/01/16.
  */
 @Service
 @Profile({"localbmvstorage", "localhomestorage", "test"})

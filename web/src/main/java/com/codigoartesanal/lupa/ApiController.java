@@ -1,7 +1,7 @@
 package com.codigoartesanal.lupa;
 
 /**
- * Created by betuzo on 21/04/15.
+ * Created by kkimvazquezangeles on 21/04/15.
  */
 public abstract class ApiController {
     private static final String API_PATH = "/api/v1";

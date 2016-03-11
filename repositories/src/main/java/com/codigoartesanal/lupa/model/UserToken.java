@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by betuzo on 25/01/16.
+ * Created by kkimvazquezangeles on 25/01/16.
  */
 @Entity
 @Table(	name = "USER_TOKEN" )

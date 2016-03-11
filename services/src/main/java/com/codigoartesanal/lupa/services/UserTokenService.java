@@ -7,7 +7,7 @@ import com.codigoartesanal.lupa.model.UserToken;
 import java.util.Map;
 
 /**
- * Created by betuzo on 18/02/16.
+ * Created by kkimvazquezangeles on 18/02/16.
  */
 public interface UserTokenService {
     int PROPERTY_TOKEN_VIGENCIA_DAYS    = 2;

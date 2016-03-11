@@ -13,7 +13,7 @@ define([
         template: _.template(tplLogin),
 
         events: {
-            'click .btn.btn-lg.btn-primary.btn-block': 'login'
+            'click #btn-login': 'login'
         },
 
         initialize: function() {
@@ -23,6 +23,7 @@ define([
 
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
+            this.$el.find('#msg-error').hide();
             return this;
         },
 
@@ -32,12 +33,17 @@ define([
             this.model.set({passwordConfirm: this.model.get('password')});
 
             if(this.model.isValid(true)){
+                $('input[name=username]').removeClass('has-error');
+                $('input[name=password]').removeClass('has-error');
                 var user = this.model.get('username');
                 var pass = this.model.get('password');
                 var remember = $("#remember").is(":checked");
                 Session.login(function(response){
                     Backbone.history.navigate('admin', { trigger : true });
                 }, user, pass, remember);
+            } else {
+                $('input[name=username]').addClass('has-error');
+                $('input[name=password]').addClass('has-error');
             }
 
         }

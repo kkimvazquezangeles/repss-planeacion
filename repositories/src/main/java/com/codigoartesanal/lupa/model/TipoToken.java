@@ -1,7 +1,7 @@
 package com.codigoartesanal.lupa.model;
 
 /**
- * Created by betuzo on 15/02/16.
+ * Created by kkimvazquezangeles on 15/02/16.
  */
 public enum TipoToken {
     VALID_EMAIL, CHANGE_PASSWORD;

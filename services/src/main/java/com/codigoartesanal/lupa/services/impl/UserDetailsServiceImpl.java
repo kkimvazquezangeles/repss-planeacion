@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Created by betuzo on 25/01/15.
+ * Created by kkimvazquezangeles on 25/01/15.
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

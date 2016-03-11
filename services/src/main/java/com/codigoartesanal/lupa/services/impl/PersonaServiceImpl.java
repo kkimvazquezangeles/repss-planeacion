@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 /**
- * Created by betuzo on 22/05/15.
+ * Created by kkimvazquezangeles on 22/05/15.
  */
 @Service
 public class PersonaServiceImpl implements PersonaService {
@@ -42,20 +42,8 @@ public class PersonaServiceImpl implements PersonaService {
     }
 
     @Override
-    public List<Map<String, Object>> listJugadorByAdmin(User user) {
-        Iterator<Persona> itJugador = personaRepository.findAllByAdmin(user).iterator();
-        List<Map<String, Object>> copy = new ArrayList<>();
-        while (itJugador.hasNext()) {
-            Persona persona = itJugador.next();
-            Map<String, Object> dto = convertJugadorToMap(persona);
-            copy.add(dto);
-        }
-        return copy;
-    }
-
-    @Override
-    public void updateFotoByJugador(String foto, Long idJugador) {
-        personaRepository.updateFotoByIdJugador(foto, idJugador);
+    public Map<String, Object> listJugadorByAdmin(User user) {
+        return convertJugadorToMap(personaRepository.findByAdmin(user));
     }
 
     private Map<String, Object> convertJugadorToMap(Persona persona) {
@@ -64,11 +52,8 @@ public class PersonaServiceImpl implements PersonaService {
         map.put(PROPERTY_NOMBRE, persona.getNombre());
         map.put(PROPERTY_PATERNO, persona.getPaterno());
         map.put(PROPERTY_MATERNO, persona.getMaterno());
-        map.put(PROPERTY_LOGO_JUGADOR, persona.getRutaFoto());
-        String pathWebFull = pathWebService.getValidPathWebFoto(persona.getRutaFoto(), OriginPhoto.PERSONA);
-        map.put(PROPERTY_RUTA_LOGO_JUGADOR, pathWebFull);
-        map.put(PROPERTY_HAS_LOGO_JUGADOR, !pathWebFull.contains(PathPhoto.JUGADOR_DEFAULT.getPath()));
-        map.put(PROPERTY_SEXO, persona.getSexo());
+        map.put(PROPERTY_DEPTO_ID, persona.getDepartamento().getId());
+        map.put(PROPERTY_DEPTO_DES, persona.getDepartamento().getNombre());
         map.put(PROPERTY_FECHA_REGISTRO, persona.getFechaRegistro());
 
         return map;
@@ -82,8 +67,6 @@ public class PersonaServiceImpl implements PersonaService {
         persona.setNombre(ligaMap.get(PROPERTY_NOMBRE));
         persona.setPaterno(ligaMap.get(PROPERTY_PATERNO));
         persona.setMaterno(ligaMap.get(PROPERTY_MATERNO));
-        persona.setRutaFoto(ligaMap.get(PROPERTY_LOGO_JUGADOR));
-        persona.setSexo(Sexo.valueOf(ligaMap.get(PROPERTY_SEXO)));
         persona.setFechaRegistro(new Date(Long.valueOf(ligaMap.get(PROPERTY_FECHA_REGISTRO))));
 
         return persona;

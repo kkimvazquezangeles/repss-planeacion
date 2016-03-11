@@ -1,33 +1,17 @@
-<div class="row">
-    <form id="form-login" role="form" class="form-signin">
-        <h2 class="form-signin-heading">Datos del Usuario</h2>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="form-group">
-                    <label>Email</label>
-                    <input class="form-control" placeholder="Email" type="text" name="username" value="<%= username %>" maxlength="25">
-                    <p class="help-block"></p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="form-group">
-                    <label>Password</label>
-                    <input class="form-control" placeholder="Password" type="password" name="password" value="<%= password %>" maxlength="16">
-                    <p class="help-block"></p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="form-group">
-                    <label>Recordarme</label>
-                    <input id="remember" type="checkbox" value="remember-me">
-                    <p class="help-block"></p>
-                </div>
-            </div>
-        </div>
-        <button type="button" class="btn btn-lg btn-primary btn-block">Login</button>
+<section class="form-1">
+    <form id="form-login">
+        <h3>Plataforma de planeación</h3>
+        <p class="field">
+            <input placeholder="Correo electrónico" type="text" name="username" value="<%= username %>" maxlength="25">
+            <i class="fa fa-user"></i>
+        </p>
+        <p class="field">
+            <input placeholder="Contraseña" type="password" name="password" value="<%= password %>" maxlength="16">
+            <i class="fa fa-unlock"></i>
+        </p>
+        <p class="submit">
+            <button id="btn-login" type="button" name="button"><i class="fa fa-arrow-right"></i></button>
+        </p>
     </form>
-</div>
+    <a id="msg-error" class="msg-error">¡Usuario y/o contraseña incorrectos!</a>
+</section>

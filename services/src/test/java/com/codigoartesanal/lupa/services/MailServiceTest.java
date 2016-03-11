@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by betuzo on 17/02/16.
+ * Created by kkimvazquezangeles on 17/02/16.
  */
 @ActiveProfiles(value = "test")
 @RunWith(SpringJUnit4ClassRunner.class)

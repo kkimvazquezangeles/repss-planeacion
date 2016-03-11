@@ -1,7 +1,7 @@
 package com.codigoartesanal.lupa.services;
 
 /**
- * Created by betuzo on 27/10/15.
+ * Created by kkimvazquezangeles on 27/10/15.
  */
 public enum PathPhoto {
     PHOTO_BASE,

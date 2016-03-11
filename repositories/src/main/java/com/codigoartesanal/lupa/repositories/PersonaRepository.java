@@ -11,13 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by betuzo on 22/05/15.
+ * Created by kkimvazquezangeles on 22/05/15.
  */
 public interface PersonaRepository extends CrudRepository<Persona, Long> {
-    List<Persona> findAllByAdmin(User admin);
-
-    @Transactional
-    @Modifying
-    @Query("update Persona e set e.rutaFoto = :rutaFotoJugador where e.id = :id")
-    int updateFotoByIdJugador(@Param("rutaFotoJugador") String rutaFotoJugador, @Param("id") Long id);
+    Persona findByAdmin(User admin);
 }

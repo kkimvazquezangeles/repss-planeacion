@@ -4,24 +4,23 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by betuzo on 11/05/15.
+ * Created by kkimvazquezangeles on 11/05/15.
  */
 @Entity
 public class Persona {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="jugador_id_seq")
-    @SequenceGenerator(name="jugador_id_seq", sequenceName="jugador_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="persona_id_seq")
+    @SequenceGenerator(name="persona_id_seq", sequenceName="persona_id_seq")
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "admin_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User admin;
+    @ManyToOne
+    @JoinColumn(name = "depto_id", nullable = false)
+    private Departamento departamento;
     private String nombre;
     private String paterno;
     private String materno;
-    @Column(name = "ruta_foto")
-    private String rutaFoto;
-    @Enumerated(EnumType.STRING)
-    private Sexo sexo;
     @Column(name = "fecha_registro")
     private Date fechaRegistro;
 
@@ -39,6 +38,14 @@ public class Persona {
 
     public void setAdmin(User admin) {
         this.admin = admin;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
 
     public String getNombre() {
@@ -65,22 +72,6 @@ public class Persona {
         this.materno = materno;
     }
 
-    public String getRutaFoto() {
-        return rutaFoto;
-    }
-
-    public void setRutaFoto(String rutaFoto) {
-        this.rutaFoto = rutaFoto;
-    }
-
-    public Sexo getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(Sexo sexo) {
-        this.sexo = sexo;
-    }
-
     public Date getFechaRegistro() {
         return fechaRegistro;
     }
@@ -98,11 +89,10 @@ public class Persona {
         return "Persona{" +
                 "id=" + id +
                 ", admin=" + admin +
+                ", departamento=" + departamento +
                 ", nombre='" + nombre + '\'' +
                 ", paterno='" + paterno + '\'' +
                 ", materno='" + materno + '\'' +
-                ", rutaFoto='" + rutaFoto + '\'' +
-                ", sexo=" + sexo +
                 ", fechaRegistro=" + fechaRegistro +
                 '}';
     }

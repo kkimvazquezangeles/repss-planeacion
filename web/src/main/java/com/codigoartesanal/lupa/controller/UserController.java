@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
- * Created by betuzo on 10/02/16.
+ * Created by kkimvazquezangeles on 10/02/16.
  */
 @Controller
 @RequestMapping("/user")

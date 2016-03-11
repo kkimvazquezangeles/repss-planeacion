@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 /**
- * Created by betuzo on 16/02/16.
+ * Created by kkimvazquezangeles on 16/02/16.
  */
 @Configuration
 @Import({ PersistenceConfig.class, ServicesConfig.class, MailConfig.class})

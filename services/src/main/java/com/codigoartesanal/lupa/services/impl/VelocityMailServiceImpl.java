@@ -13,7 +13,7 @@ import org.springframework.ui.velocity.VelocityEngineUtils;
 import java.util.Map;
 
 /**
- * Created by betuzo on 15/02/16.
+ * Created by kkimvazquezangeles on 15/02/16.
  */
 @Service
 public class VelocityMailServiceImpl implements MailService {

@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by betuzo on 30/10/15.
+ * Created by kkimvazquezangeles on 30/10/15.
  */
 @Controller
 @RequestMapping("/file")
@@ -56,7 +56,6 @@ public class FileUploadController {
 
                 OriginPhoto originPhoto = OriginPhoto.valueOf(origin);
                 storageImageServices.writeImage(bytes, nameLogo, originPhoto);
-                personaService.updateFotoByJugador(nameLogo, id);
 
 
                 result.put("result", "success");
@@ -81,7 +80,6 @@ public class FileUploadController {
 
         OriginPhoto originPhoto = OriginPhoto.valueOf(origin);
         storageImageServices.deleteImage(foto, originPhoto);
-        personaService.updateFotoByJugador("", idJugador);
 
         result.put("result", "success");
         result.put("defaultname", PathPhoto.JUGADOR_DEFAULT.getPath());

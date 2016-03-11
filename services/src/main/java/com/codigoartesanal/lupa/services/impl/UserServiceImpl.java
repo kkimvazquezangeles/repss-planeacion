@@ -8,6 +8,7 @@ import com.codigoartesanal.lupa.repositories.UserRepository;
 import com.codigoartesanal.lupa.repositories.UserRoleRepository;
 import com.codigoartesanal.lupa.repositories.UserTokenRepository;
 import com.codigoartesanal.lupa.services.MailService;
+import com.codigoartesanal.lupa.services.PersonaService;
 import com.codigoartesanal.lupa.services.UserService;
 import com.codigoartesanal.lupa.services.UserTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import java.util.*;
 import static com.codigoartesanal.lupa.model.TipoToken.*;
 
 /**
- * Created by betuzo on 07/04/15.
+ * Created by kkimvazquezangeles on 07/04/15.
  */
 @Service
 public class UserServiceImpl implements UserService {
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Autowired
-    UserTokenRepository userTokenRepository;
+    PersonaService personaService;
 
     @Autowired
     UserRoleRepository userRoleRepository;
@@ -44,7 +45,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Map<String, Object> findByUsername(String username) {
-        return convertUserToMap(userRepository.findByUsername(username));
+        User user = userRepository.findByUsername(username);
+        Map<String, Object> result = convertUserToMap(user);
+        result.putAll(personaService.listJugadorByAdmin(user));
+        return result;
     }
 
     @Override

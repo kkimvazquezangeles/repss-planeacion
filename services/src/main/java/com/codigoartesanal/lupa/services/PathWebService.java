@@ -3,7 +3,7 @@ package com.codigoartesanal.lupa.services;
 import com.codigoartesanal.lupa.model.OrigenEstadistica;
 
 /**
- * Created by betuzo on 16/01/16.
+ * Created by kkimvazquezangeles on 16/01/16.
  */
 public interface PathWebService {
 

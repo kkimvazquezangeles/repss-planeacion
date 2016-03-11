@@ -19,7 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 /**
- * Created by betuzo on 25/01/15.
+ * Created by kkimvazquezangeles on 25/01/15.
  */
 @Configuration
 @EnableWebSecurity

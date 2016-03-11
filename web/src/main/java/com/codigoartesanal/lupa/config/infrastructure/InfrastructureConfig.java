@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
- * Created by betuzo on 11/05/15.
+ * Created by kkimvazquezangeles on 11/05/15.
  */
 @Configuration
 @EnableAspectJAutoProxy

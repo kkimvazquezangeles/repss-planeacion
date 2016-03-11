@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.*;
 import javax.annotation.Resource;
 
 /**
- * Created by betuzo on 28/11/14.
+ * Created by kkimvazquezangeles on 28/11/14.
  */
 
 @Configuration

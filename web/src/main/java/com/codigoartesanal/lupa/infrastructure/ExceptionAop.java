@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by betuzo on 12/05/15.
+ * Created by kkimvazquezangeles on 12/05/15.
  */
 @Aspect
 @Component
