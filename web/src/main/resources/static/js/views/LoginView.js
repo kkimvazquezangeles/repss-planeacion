@@ -37,10 +37,9 @@ define([
                 $('input[name=password]').removeClass('has-error');
                 var user = this.model.get('username');
                 var pass = this.model.get('password');
-                var remember = $("#remember").is(":checked");
                 Session.login(function(response){
                     Backbone.history.navigate('admin', { trigger : true });
-                }, user, pass, remember);
+                }, user, pass, true);
             } else {
                 $('input[name=username]').addClass('has-error');
                 $('input[name=password]').addClass('has-error');

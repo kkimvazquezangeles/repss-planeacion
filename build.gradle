@@ -87,7 +87,7 @@ project(":web") {
         targetCompatibility = 1.8
     }
 
-    mainClassName = "com.codigoartesanal.lupa.Application"
+    mainClassName = "mx.gob.hidalgo.repss.planeacion.Application"
 
     repositories {
         jcenter()
