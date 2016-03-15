@@ -27,7 +27,7 @@ define([
 				wait:true,
 				success:function(model, response) {
 					Session.set('authenticated', true);
-					Session.set('username', user)
+					Session.set('username', user);
 					if (remember) {
 						$.cookie('auth_token', JSON.stringify({username: user, token: model.get('token')}));
 					}

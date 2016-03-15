@@ -4,11 +4,11 @@ define([
 
     var PerfilModel = Backbone.Model.extend({
 
-        urlRoot: 'user',
+        urlRoot: 'persona',
 
         defaults: {
-            nombreArea: '',
-            nombrePersonal: ''
+            deptoDes: '',
+            nombreCompleto: ''
         },
 
         initialize: function() {

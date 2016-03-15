@@ -3,6 +3,7 @@ package mx.gob.hidalgo.repss.planeacion.controller;
 import mx.gob.hidalgo.repss.planeacion.model.User;
 import mx.gob.hidalgo.repss.planeacion.services.GeneralService;
 import mx.gob.hidalgo.repss.planeacion.services.PersonaService;
+import mx.gob.hidalgo.repss.planeacion.services.UserService;
 import mx.gob.hidalgo.repss.planeacion.services.impl.DeleteStatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,12 +22,15 @@ public class PersonaController {
     @Autowired
     PersonaService personaService;
 
+    @Autowired
+    UserService userService;
+
     @ResponseBody
     @RequestMapping(
             value = { "" },
             method = {RequestMethod.POST},
             produces = {"application/json;charset=UTF-8"})
-    public Map<String, Object> createJugador(@RequestBody Map<String, String> jugador, User user) {
+    public Map<String, Object> createPersona(@RequestBody Map<String, String> jugador, User user) {
         return personaService.createJugador(jugador, user);
     }
 
@@ -35,8 +39,18 @@ public class PersonaController {
             value = { "/{jugador}" },
             method = {RequestMethod.PUT},
             produces = {"application/json;charset=UTF-8"})
-    public Map<String, Object> updateJugador(@RequestBody Map<String, String> jugador, User user) {
+    public Map<String, Object> updatePersona(@RequestBody Map<String, String> jugador, User user) {
         return personaService.createJugador(jugador, user);
+    }
+
+    @ResponseBody
+    @RequestMapping(
+            value = "/{username:.+}",
+            method = {RequestMethod.GET},
+            headers="Accept=*/*",
+            produces = {"application/json;charset=UTF-8"})
+    public Map<String, Object> findPersonalByUser(@PathVariable("username") String username) {
+        return userService.findByUsername(username);
     }
 
     @ResponseBody
@@ -44,9 +58,10 @@ public class PersonaController {
             value = { "" },
             method = {RequestMethod.GET},
             produces = {"application/json;charset=UTF-8"})
-    public Map<String, Object> listJugadorByUser(User user) {
+    public Map<String, Object> listPersonaByUser(User user) {
         return personaService.listJugadorByAdmin(user);
     }
+
 
     @ResponseBody
     @RequestMapping(

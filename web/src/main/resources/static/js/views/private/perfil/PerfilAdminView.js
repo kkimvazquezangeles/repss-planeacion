@@ -6,8 +6,9 @@ define([
     'views/private/util/ModalGenericView',
     'views/private/perfil/FilesView',
     'collections/FilesCollection',
-    'text!templates/private/perfil/tplPerfilAdmin.html'
-], function($, Backbone, BaseView, PerfilModel, ModalGenericView, FilesView, FilesCollection, tplPerfilAdmin){
+    'text!templates/private/perfil/tplPerfilAdmin.html',
+    'Session'
+], function($, Backbone, BaseView, PerfilModel, ModalGenericView, FilesView, FilesCollection, tplPerfilAdmin, Session){
 
     var PerfilAdminView = BaseView.extend({
         template: _.template(tplPerfilAdmin),
@@ -18,14 +19,16 @@ define([
 
         initialize: function() {
             this.model = new PerfilModel();
+            this.model.set({id: Session.get('username')});
             this.files = new FilesCollection();
             this.listenTo(this.files, 'add', this.agregarFile);
             this.listenTo(this.files, 'sync', this.syncFiles);
-            this.files.fetch();
+
+            this.listenTo(this.model, 'sync', this.syncPerfil);
+            this.model.fetch();
         },
 
         render: function() {
-            this.$el.html(this.template(this.model.toJSON()));
             return this;
         },
 
@@ -38,6 +41,11 @@ define([
         },
 
         syncFiles: function(){
+        },
+
+        syncPerfil: function(){
+            this.$el.html(this.template(this.model.toJSON()));
+            this.files.fetch();
         }
 
     });
