@@ -2,43 +2,42 @@ define([
     'jquery',
     'backbone',
     'core/BaseView',
-    'models/UserModel',
     'views/private/util/ModalGenericView',
-    'text!templates/private/perfil/tplPerfilAdmin.html',
-    'Session'
-], function($, Backbone, BaseView, UserModel, ModalGenericView, tplPerfilAdmin, Session){
+    'views/private/perfil/FilesView',
+    'collections/FilesCollection',
+    'text!templates/private/perfil/tplPerfilAdmin.html'
+], function($, Backbone, BaseView, ModalGenericView, FilesView, FilesCollection, tplPerfilAdmin){
 
-    var LigaAdminView = BaseView.extend({
+    var PerfilAdminView = BaseView.extend({
         template: _.template(tplPerfilAdmin),
 
         events: {
-
-
+            'click #btn-upload' : 'uploadFile'
         },
 
         initialize: function() {
-            this.model = new UserModel();
-            this.listenTo(this.model, 'sync', this.saveUserSuccess);
-            this.listenTo(this.model, 'error', this.saveUserError);
-            this.model.set({id: Session.get('username')});
-            this.model.fetch();
+            this.files = new FilesCollection();
+            this.listenTo(this.files, 'add', this.agregarFile);
+            this.listenTo(this.files, 'sync', this.syncFiles);
+            this.files.fetch();
         },
 
         render: function() {
             return this;
         },
 
-        saveUserSuccess: function(model, response, options){
-            this.$el.html(this.template(this.model.toJSON()));
+        uploadFile: function(){
         },
 
-        saveUserError: function(model, response, options){
-            new ModalGenericView({
-                message: response.responseJSON.message
-            });
+        agregarFile: function(modelo){
+            new FilesView(modelo);
+        },
+
+        syncFiles: function(){
         }
+
     });
 
-    return LigaAdminView;
+    return PerfilAdminView;
 
 });
