@@ -18,6 +18,7 @@ public class UserRole{
 	private User user;
 	@Column(name = "role", nullable = false, length = 45)
 	private String role;
+
  
 	public UserRole() {
 	}

@@ -12,7 +12,7 @@ public class Persona {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="persona_id_seq")
     @SequenceGenerator(name="persona_id_seq", sequenceName="persona_id_seq")
     private Long id;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User admin;
     @ManyToOne
