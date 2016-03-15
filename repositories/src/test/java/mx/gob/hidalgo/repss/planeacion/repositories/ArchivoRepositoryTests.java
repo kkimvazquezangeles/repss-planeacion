@@ -36,14 +36,6 @@ public class ArchivoRepositoryTests {
     }
 
     @Test
-    public void testFindByUsuarioOficial() {
-        User usuario = new User();
-        usuario.setUsername("jperez@tu.me");
-        Set<Archivo> archivos = archivoRepository.findAllByUser(usuario);
-        Assert.assertTrue(archivos.size() == 1);
-    }
-
-    @Test
     public void testFindByRutaOficial() {
         String ruta = "C:\\Users\\Zaira_Liz\\Documents\\Plataforma";
         Set<Archivo> archivos = archivoRepository.findAllByRuta(ruta);

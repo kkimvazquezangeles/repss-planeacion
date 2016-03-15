@@ -19,8 +19,8 @@ public class Archivo {
     @Column(name = "fecha_registro")
     private Date fechaRegistro;
     @ManyToOne
-    @JoinColumn(name = "username", nullable = false)
-    private User user;
+    @JoinColumn(name = "persona_id", nullable = false)
+    private Persona persona;
     private String ruta;
 
     public Long getId() {
@@ -55,12 +55,12 @@ public class Archivo {
         this.departamento = departamento;
     }
 
-    public User getUser() {
-        return user;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     public String getRuta() {

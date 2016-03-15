@@ -12,7 +12,6 @@ import java.util.Set;
  */
 public interface ArchivoRepository extends CrudRepository<Archivo, Long> {
     Set<Archivo> findAllByDepartamento(Departamento depto);
-    Set<Archivo> findAllByUser(User usuario);
     Set<Archivo> findAllByRuta(String ruta);
 }
 
