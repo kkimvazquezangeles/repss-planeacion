@@ -2,11 +2,12 @@ define([
     'jquery',
     'backbone',
     'core/BaseView',
+    'models/PerfilModel',
     'views/private/util/ModalGenericView',
     'views/private/perfil/FilesView',
     'collections/FilesCollection',
     'text!templates/private/perfil/tplPerfilAdmin.html'
-], function($, Backbone, BaseView, ModalGenericView, FilesView, FilesCollection, tplPerfilAdmin){
+], function($, Backbone, BaseView, PerfilModel, ModalGenericView, FilesView, FilesCollection, tplPerfilAdmin){
 
     var PerfilAdminView = BaseView.extend({
         template: _.template(tplPerfilAdmin),
@@ -16,6 +17,7 @@ define([
         },
 
         initialize: function() {
+            this.model = new PerfilModel();
             this.files = new FilesCollection();
             this.listenTo(this.files, 'add', this.agregarFile);
             this.listenTo(this.files, 'sync', this.syncFiles);
@@ -23,6 +25,7 @@ define([
         },
 
         render: function() {
+            this.$el.html(this.template(this.model.toJSON()));
             return this;
         },
 
@@ -30,7 +33,8 @@ define([
         },
 
         agregarFile: function(modelo){
-            new FilesView(modelo);
+            var vista = new FilesView(modelo);
+            $("#grid-data").find('tbody:last').append(vista.render().$el);
         },
 
         syncFiles: function(){

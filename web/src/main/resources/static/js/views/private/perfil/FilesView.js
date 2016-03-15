@@ -2,8 +2,9 @@ define([
 	'jquery',
 	'underscore',
 	'core/BaseView',
+	'dateformat',
 	'text!templates/private/perfil/tplRowFile.html'
-], function($, _, BaseView, tplRowFile){
+], function($, _, BaseView, dateformat, tplRowFile){
 
 	var FilesView = BaseView.extend({
         template: _.template(tplRowFile),
@@ -16,6 +17,8 @@ define([
 
         initialize: function(modelo) {
             this.model = modelo;
+            var fechaRegistroDes = new Date(this.model.get('fechaRegistro'));
+            this.model.set({fechaRegistroDes: fechaRegistroDes.format("mm/dd/yyyy")});
         },
 
         render: function() {

@@ -32,7 +32,7 @@ public class ArchivoRepositoryTests {
         Departamento departamento = new Departamento();
         departamento.setId(1L);
         Set<Archivo> archivos = archivoRepository.findAllByDepartamento(departamento);
-        Assert.assertTrue(archivos.size() == 1);
+        Assert.assertTrue(archivos.size() == 2);
     }
 
     @Test
