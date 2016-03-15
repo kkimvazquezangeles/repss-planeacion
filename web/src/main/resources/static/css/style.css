@@ -1,6 +1,6 @@
 .contenedor {
 	width:90%;
-	max-width:1000px; 	
+	max-width:1000px;
 	margin:0 auto;
 	overflow:hidden;
 
@@ -11,7 +11,7 @@ header {
 	margin:9px 0;
 	position:center;
 	-webkit-border-radius: 5px 5px;
-	
+
 }
 
 header img {
@@ -31,7 +31,7 @@ footer {
 	margin:20px 0;
 	position: center;
 	-webkit-border-radius: 5px 5px;
-	
+
 }
 
 footer a{
@@ -57,9 +57,9 @@ picture a {
     position: relative; /* For the submit button positioning */
 
     /* Styles */
-    box-shadow: 
-        0 0 1px rgba(0, 0, 0, 0.3), 
-        0 3px 7px rgba(0, 0, 0, 0.3), 
+    box-shadow:
+        0 0 1px rgba(0, 0, 0, 0.3),
+        0 3px 7px rgba(0, 0, 0, 0.3),
         inset 0 1px rgba(255,255,255,1),
         inset 0 -3px 2px rgba(0,0,0,0.25);
     border-radius: 5px;
@@ -88,7 +88,7 @@ picture a {
 
     /* Styles */
     border: none; /* Remove the default border */
-    box-shadow: 
+    box-shadow:
         inset 0 0 5px rgba(0,0,0,0.1),
         inset 0 3px 2px rgba(0,0,0,0.1);
     border-radius: 3px;
@@ -110,7 +110,7 @@ picture a {
     /* Styles */
     background: #ffffff;
     border-radius: 50%;
-    box-shadow: 
+    box-shadow:
         0 0 2px rgba(0,0,0,0.1),
         0 3px 2px rgba(0,0,0,0.1),
         inset 0 -3px 2px rgba(0,0,0,0.2);
@@ -131,7 +131,7 @@ picture a {
     border: none; /* Remove the default border */
     border-radius: inherit;
     background: linear-gradient(#607D70, #107A49);
-    box-shadow: 
+    box-shadow:
         inset 0 1px 0 rgba(255,255,255,0.3),
         0 1px 2px rgba(0,0,0,0.35),
         inset 0 3px 2px rgba(255,255,255,0.2),
@@ -147,7 +147,7 @@ picture a {
 
 .form-1 button:active {
     background: #42A2BC;
-    box-shadow: 
+    box-shadow:
         inset 0 0 5px rgba(0,0,0,0.3),
         inset 0 3px 4px rgba(0,0,0,0.3);
 }
@@ -184,9 +184,9 @@ header picture {
     position: relative; /* For the submit button positioning */
 
     /* Styles */
-    box-shadow: 
-        0 0 1px rgba(0, 0, 0, 0.3), 
-        0 3px 7px rgba(0, 0, 0, 0.3), 
+    box-shadow:
+        0 0 1px rgba(0, 0, 0, 0.3),
+        0 3px 7px rgba(0, 0, 0, 0.3),
         inset 0 1px rgba(255,255,255,1),
         inset 0 -3px 2px rgba(0,0,0,0.25);
     border-radius: 5px;
@@ -240,7 +240,7 @@ div .icono {
     color: #7D7878;
 
 }
-td {
+.table td {
     border-width: .2em;
     border-color: #E8E8E8;
     border-style: solid;
@@ -254,10 +254,35 @@ td {
      color: red;
  }
 
-@media screen and (max-width: 400px) {
+.menu {
+    padding: 2em;
+}
+
+.menu td {
+    border-width: .2em;
+    border-color: #E8E8E8;
+    border-style: solid;
+    text-align: center;
+    height: 2em;
+    /* border-top-width: thick; */
+    width: 5em;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.menu td img{
+   padding-left: 0em;
+   cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
     .contenedor {
         width: 100%;
     }
+    .menu td{
+        padding: 0em;
+        border-style: none;
+        height: 0em;
+
+    }
 }
-
-
