@@ -18,6 +18,10 @@ public class Archivo {
     private Departamento departamento;
     @Column(name = "fecha_registro")
     private Date fechaRegistro;
+    @ManyToOne
+    @JoinColumn(name = "username", nullable = false)
+    private User user;
+    private String ruta;
 
     public Long getId() {
         return id;
@@ -49,6 +53,22 @@ public class Archivo {
 
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
     }
 
     @Override
