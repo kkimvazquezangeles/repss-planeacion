@@ -41,7 +41,7 @@ public class ArchivoServiceImpl implements ArchivoService {
     @Override
     public void deleteArchivo(Long idArchivo) {
         Archivo archivo = archivoRepository.findOne(idArchivo);
-        storageImageServices.deleteImage(archivo.getNombre(), FileOrigin.getEnum(archivo.getId()));
+        storageImageServices.deleteImage(archivo.getNombre(), FileOrigin.getEnum(archivo.getDepartamento().getId()));
         archivoRepository.delete(idArchivo);
     }
 
@@ -62,7 +62,7 @@ public class ArchivoServiceImpl implements ArchivoService {
         Map<String, Object> map = new HashMap<>();
         map.put(PROPERTY_ID, archivo.getId());
         map.put(PROPERTY_NOMBRE, archivo.getNombre());
-        map.put(PROPERTY_RUTA_NOMBRE, pathWeb.getValidPathWebFoto(archivo.getNombre(), FileOrigin.getEnum(archivo.getId())));
+        map.put(PROPERTY_RUTA_NOMBRE, pathWeb.getValidPathWebFoto(archivo.getNombre(), FileOrigin.getEnum(archivo.getDepartamento().getId())));
         map.put(PROPERTY_DEPTO_ID, archivo.getDepartamento().getId());
         map.put(PROPERTY_DEPTO_DES, archivo.getDepartamento().getNombre());
         map.put(PROPERTY_USER_ID, archivo.getPersona().getId());

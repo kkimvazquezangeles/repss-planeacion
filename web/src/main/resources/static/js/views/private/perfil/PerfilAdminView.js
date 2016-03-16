@@ -59,11 +59,11 @@ define([
                 type: 'POST',
                 success: function(data){
                     var fileModel = new FileModel(data);
-                    new ModalGenericView({message: 'Operación realizada con éxito'});
+                    alert('Operación realizada con éxito');
                     that.files.add(fileModel);
                 },
                 error: function(data){
-                    new ModalGenericView({message: 'Se presentó un error, vuelva a intentar'});
+                    alert('Se presentó un error, vuelva a intentar');
                 }
             });
         },
@@ -89,6 +89,7 @@ define([
         },
 
         opcionMenu: function(event) {
+            $('#grid-data').show();
         },
 
         logout: function(){

@@ -11,8 +11,8 @@ define([
         tagName: 'tr',
 
         events: {
-            'click #btn-delete' : 'deleteFile',
-            'click #btn-download' : 'downloadFile'
+            'click #btn-delete'     : 'deleteFile',
+            'click #btn-download'   : 'downloadFile'
         },
 
         initialize: function(modelo) {
@@ -29,7 +29,6 @@ define([
         deleteFile: function(event){
             var res = confirm("¿Desea eliminar este archivo?");
             if(res){
-                this.model.setTipo(2);
                 that = this;
                 this.model.destroy({ contentType: 'application/json',
                 wait:true,
@@ -43,15 +42,6 @@ define([
                 });
             }
         },
-
-        destroyView: function() {
-             // COMPLETELY UNBIND THE VIEW
-             this.undelegateEvents();
-             this.$el.removeData().unbind();
-             // Remove view from DOM
-             this.remove();
-             Backbone.View.prototype.remove.call(this);
-        }
 
         downloadFile: function(){
         }
