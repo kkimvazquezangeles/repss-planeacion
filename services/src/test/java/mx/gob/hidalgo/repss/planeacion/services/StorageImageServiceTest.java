@@ -26,7 +26,7 @@ public class StorageImageServiceTest {
     public void testWriteFileNull() {
         String serveerPath = "./src/test/resources/img/prueba.png";
         boolean result;
-        result = storageImageService.writeImage(null, serveerPath, FileOrigin.DIR_ADMIN);
+        result = storageImageService.writeImage(null, serveerPath, "", FileOrigin.DIR_ADMIN);
         Assert.assertTrue(result == false);
     }
 
@@ -36,7 +36,7 @@ public class StorageImageServiceTest {
         String serveerPath ="./src/test/resources/img/photo/equipo/";
         byte[] contenido = "Hallo World".getBytes();
         boolean result = true;
-        result = storageImageService.writeImage(contenido, name, FileOrigin.DIR_AF_OP);
+        result = storageImageService.writeImage(contenido, name, "", FileOrigin.DIR_AF_OP);
         storageImageService.deleteImage(name, FileOrigin.DIR_AF_OP);
         File dir = new File(serveerPath + name);
         if (dir.exists()) {
@@ -52,7 +52,7 @@ public class StorageImageServiceTest {
         String serveerPath ="./src/test/resources/img/photo/jugador/";
         byte[] contenido = "Hallo World".getBytes();
         boolean result = true;
-        result = storageImageService.writeImage(contenido, name, FileOrigin.DIR_ADMIN);
+        result = storageImageService.writeImage(contenido, name, "", FileOrigin.DIR_ADMIN);
         storageImageService.deleteImage(name, FileOrigin.DIR_ADMIN);
         File dir = new File(serveerPath + name);
         if (dir.exists()) {

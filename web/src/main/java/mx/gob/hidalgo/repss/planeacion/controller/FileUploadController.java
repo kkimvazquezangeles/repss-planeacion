@@ -50,7 +50,8 @@ public class FileUploadController {
             try {
                 byte[] bytes = file.getBytes();
                 FileOrigin fileOrigin = FileOrigin.getEnum(idDepto);
-                storageImageServices.writeImage(bytes, file.getOriginalFilename(), fileOrigin);
+
+                storageImageServices.writeImage(bytes, file.getOriginalFilename(), file.getContentType(), fileOrigin);
                 User user = new User();
                 user.setUsername(username);
                 Map<String, String> archivoMap = new HashMap<>();

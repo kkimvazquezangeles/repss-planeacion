@@ -28,10 +28,10 @@ public class StorageGoogleCloudImpl implements StorageImageService {
     Environment env;
 
     @Override
-    public boolean writeImage(byte[] file, String logo, FileOrigin fileOrigin) {
+    public boolean writeImage(byte[] file, String logo, String contentType, FileOrigin fileOrigin) {
         String pathFull = env.getRequiredProperty(PathWebService.PROPERTY_STATIC_FILE_PHOTO) +
                 fileOrigin.getPath() + logo;
-        return writeFile(file, pathFull);
+        return writeFile(file, pathFull, contentType);
     }
 
     @Override
@@ -51,10 +51,10 @@ public class StorageGoogleCloudImpl implements StorageImageService {
         }
     }
 
-    private boolean writeFile(byte[] file, String path)  {
+    private boolean writeFile(byte[] file, String path, String contentType)  {
         try {
             GoogleCloudStorage.uploadStream(
-                    path, PROPERTY_STATIC_GOOGLE_IMAGE_CONTENT_TYPE,
+                    path, contentType,
                     new ByteArrayInputStream(file),
                     env.getRequiredProperty(PROPERTY_STATIC_GOOGLE_BUCKET_NAME));
         } catch (GeneralSecurityException e) {

@@ -22,7 +22,7 @@ public class StorageLocalImpl implements StorageImageService {
     Environment env;
 
     @Override
-    public boolean writeImage(byte[] file, String path, FileOrigin fileOrigin) {
+    public boolean writeImage(byte[] file, String path, String contetType, FileOrigin fileOrigin) {
         return writeFile(file, getValidPathAbsolute(fileOrigin.getPath()) + path);
     }
 
