@@ -6,4 +6,5 @@ INSERT INTO DEPARTAMENTO (ID, NOMBRE) VALUES
 (5, 'Direccion de Financiamiento'),
 (6, 'Direccion de PROSPERA'),
 (7, 'Direccion de Prospectiva y Planeación'),
-(8, 'Direccion de Evaluación y Seguimiento');
+(8, 'Direccion de Evaluación y Seguimiento'),
+(9, 'Administración');

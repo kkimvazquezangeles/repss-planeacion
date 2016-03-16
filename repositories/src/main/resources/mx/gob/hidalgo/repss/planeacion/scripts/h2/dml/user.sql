@@ -8,6 +8,7 @@ INSERT INTO USUARIO (USERNAME, PASSWORD, ENABLED) VALUES
 ('mauricio.garcia.ramirez@gmail.com', '54Maugarcia', 1),
 ('maribel.oviedo@hidalgo.gob.mx', '3Marioviedo', 1),
 ('isaias.parra@hidalgo.gob.mx', '15Parraisais', 1),
+('zaira.martinez.glez@gmail.com', 'Zmartinez23', 1);
 
 
 INSERT INTO USER_ROLE (ID, USERNAME, ROLE) VALUES
@@ -20,5 +21,6 @@ INSERT INTO USER_ROLE (ID, USERNAME, ROLE) VALUES
 (7, 'mauricio.garcia.ramirez@gmail.com', 'Director'),
 (8, 'maribel.oviedo@hidalgo.gob.mx', 'ADMIN'),
 (9, 'isaias.parra@hidalgo.gob.mx', 'ADMIN'),
+(9, 'zaira.martinez.glez@gmail.com', 'ADMIN');
 
 
