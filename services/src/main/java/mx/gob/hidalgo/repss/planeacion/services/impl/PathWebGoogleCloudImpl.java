@@ -17,14 +17,14 @@ import javax.annotation.Resource;
 @Profile("googlestorage")
 public class PathWebGoogleCloudImpl implements PathWebService {
 
-    static final String PROPERTY_STATIC_GOOGLE_BUCKET_NAME = "lupa.service.google.pathWeb";
+    static final String PROPERTY_STATIC_GOOGLE_PATH_WEB = "lupa.service.google.pathWeb";
 
     @Resource
     Environment env;
 
     @Override
     public String getValidPathWebFoto(String path, FileOrigin fileOrigin) {
-        String pathFull = env.getRequiredProperty(PathWebService.PROPERTY_STATIC_FILE_PHOTO);
+        String pathFull = env.getRequiredProperty(PROPERTY_STATIC_GOOGLE_PATH_WEB);
         pathFull = pathFull + fileOrigin.getPath() + path;
         return pathFull;
     }
