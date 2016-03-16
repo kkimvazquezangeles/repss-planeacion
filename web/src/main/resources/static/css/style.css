@@ -274,6 +274,10 @@ div .icono {
    cursor: pointer;
 }
 
+.hidden {
+   display: none;
+}
+
 @media screen and (max-width: 1200px) {
     .contenedor {
         width: 100%;

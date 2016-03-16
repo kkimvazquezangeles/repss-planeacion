@@ -18,7 +18,7 @@ public interface ArchivoService {
     String PROPERTY_USER_DES            = "userDes";
     String PROPERTY_FECHA_REGISTRO      = "fechaRegistro";
 
-    Map<String,Object> createArchivo(Map<String, String> jugador, User user);
+    Map<String,Object> createArchivo(Map<String, String> archivo, User user);
 
     void deleteArchivo(Long idArchivo);
 

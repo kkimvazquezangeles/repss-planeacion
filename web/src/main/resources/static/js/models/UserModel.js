@@ -23,7 +23,7 @@ define([
             },
             password: {
                 required: true,
-                pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$/,
+                pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/,
                 msg: 'El password debe tener por lo menos una letra mayuscula, una minuscula y un numero'
             },
             passwordConfirm: {

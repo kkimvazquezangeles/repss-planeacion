@@ -30,7 +30,7 @@ public class ArchivoRepositoryTests {
     @Test
     public void testFindByNombreOficial() {
         Departamento departamento = new Departamento();
-        departamento.setId(1L);
+        departamento.setId(3L);
         Set<Archivo> archivos = archivoRepository.findAllByDepartamento(departamento);
         Assert.assertTrue(archivos.size() == 2);
     }

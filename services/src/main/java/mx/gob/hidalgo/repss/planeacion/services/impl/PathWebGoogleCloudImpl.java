@@ -1,7 +1,7 @@
 package mx.gob.hidalgo.repss.planeacion.services.impl;
 
 import mx.gob.hidalgo.repss.planeacion.model.OrigenEstadistica;
-import mx.gob.hidalgo.repss.planeacion.services.OriginPhoto;
+import mx.gob.hidalgo.repss.planeacion.services.FileOrigin;
 import mx.gob.hidalgo.repss.planeacion.services.PathPhoto;
 import mx.gob.hidalgo.repss.planeacion.services.PathWebService;
 import org.springframework.context.annotation.Profile;
@@ -23,10 +23,10 @@ public class PathWebGoogleCloudImpl implements PathWebService {
     Environment env;
 
     @Override
-    public String getValidPathWebFoto(String path, OriginPhoto originPhoto) {
+    public String getValidPathWebFoto(String path, FileOrigin fileOrigin) {
         String pathBase = PathPhoto.JUGADOR_BASE.getPath();
         String pathDefault = PathPhoto.JUGADOR_DEFAULT.getPath();
-        if (originPhoto == OriginPhoto.ARBITRO) {
+        if (fileOrigin == FileOrigin.DIR_ADMIN) {
             pathBase = PathPhoto.ARBITRO_BASE.getPath();
             pathDefault = PathPhoto.ARBITRO_DEFAULT.getPath();
         }

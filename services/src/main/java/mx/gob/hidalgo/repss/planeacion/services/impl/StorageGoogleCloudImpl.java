@@ -1,7 +1,7 @@
 package mx.gob.hidalgo.repss.planeacion.services.impl;
 
 import mx.gob.hidalgo.repss.planeacion.services.google.GoogleCloudStorage;
-import mx.gob.hidalgo.repss.planeacion.services.OriginPhoto;
+import mx.gob.hidalgo.repss.planeacion.services.FileOrigin;
 import mx.gob.hidalgo.repss.planeacion.services.PathPhoto;
 import mx.gob.hidalgo.repss.planeacion.services.PathWebService;
 import mx.gob.hidalgo.repss.planeacion.services.StorageImageService;
@@ -28,30 +28,17 @@ public class StorageGoogleCloudImpl implements StorageImageService {
     Environment env;
 
     @Override
-    public boolean writeImage(byte[] file, String logo, OriginPhoto originPhoto) {
+    public boolean writeImage(byte[] file, String logo, FileOrigin fileOrigin) {
         String pathFull = env.getRequiredProperty(PathWebService.PROPERTY_STATIC_FILE_PHOTO) +
-                getPathBaseByOriginPhoto(originPhoto) + logo;
+                fileOrigin.getPath() + logo;
         return writeFile(file, pathFull);
     }
 
     @Override
-    public void deleteImage(String logo, OriginPhoto originPhoto) {
+    public void deleteImage(String logo, FileOrigin fileOrigin) {
         String pathFull = env.getRequiredProperty(PathWebService.PROPERTY_STATIC_FILE_PHOTO) +
-                getPathBaseByOriginPhoto(originPhoto) + logo;
+                fileOrigin.getPath() + logo;
         deleteFile(pathFull);
-    }
-
-    private String getPathBaseByOriginPhoto(OriginPhoto originPhoto){
-        switch (originPhoto){
-            case ARBITRO:
-                return PathPhoto.ARBITRO_BASE.getPath();
-            case PERSONA:
-                return PathPhoto.JUGADOR_BASE.getPath();
-            case EQUIPO:
-                return PathPhoto.EQUIPO_BASE.getPath();
-        }
-
-        return "";
     }
 
     private void deleteFile(String path){

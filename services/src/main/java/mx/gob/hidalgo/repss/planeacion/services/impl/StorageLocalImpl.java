@@ -1,6 +1,6 @@
 package mx.gob.hidalgo.repss.planeacion.services.impl;
 
-import mx.gob.hidalgo.repss.planeacion.services.OriginPhoto;
+import mx.gob.hidalgo.repss.planeacion.services.FileOrigin;
 import mx.gob.hidalgo.repss.planeacion.services.PathPhoto;
 import mx.gob.hidalgo.repss.planeacion.services.PathWebService;
 import mx.gob.hidalgo.repss.planeacion.services.StorageImageService;
@@ -22,30 +22,17 @@ public class StorageLocalImpl implements StorageImageService {
     Environment env;
 
     @Override
-    public boolean writeImage(byte[] file, String path, OriginPhoto originPhoto) {
-        return writeFile(file, getValidPathAbsolute(getPathBaseByOriginPhoto(originPhoto)) + path);
+    public boolean writeImage(byte[] file, String path, FileOrigin fileOrigin) {
+        return writeFile(file, getValidPathAbsolute(fileOrigin.getPath()) + path);
     }
 
     @Override
-    public void deleteImage(String logo, OriginPhoto originPhoto) {
+    public void deleteImage(String logo, FileOrigin fileOrigin) {
         String pathFull = env.getRequiredProperty(PathWebService.PROPERTY_STATIC_FILE_PHOTO)
-                + getPathBaseByOriginPhoto(originPhoto) + logo;
+                + fileOrigin.getPath() + logo;
         File dir = new File(pathFull);
         if (dir.exists())
             dir.delete();
-    }
-
-    private String getPathBaseByOriginPhoto(OriginPhoto originPhoto){
-        switch (originPhoto){
-            case ARBITRO:
-                return PathPhoto.ARBITRO_BASE.getPath();
-            case PERSONA:
-                return PathPhoto.JUGADOR_BASE.getPath();
-            case EQUIPO:
-                return PathPhoto.EQUIPO_BASE.getPath();
-        }
-
-        return "";
     }
 
     private boolean writeFile(byte[] file, String path)  {

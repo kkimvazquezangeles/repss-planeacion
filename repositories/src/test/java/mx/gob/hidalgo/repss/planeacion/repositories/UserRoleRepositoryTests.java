@@ -28,7 +28,7 @@ public class UserRoleRepositoryTests {
 
     @Test
     public void testFindByNombreOficial() {
-        String username = "jsoto";
+        String username = "alberto.xithe@hidalgo.gob.mx";
         User user = new User();
         user.setUsername(username);
         Set<UserRole> userRole = userRoleRepository.findAllByUser(user);

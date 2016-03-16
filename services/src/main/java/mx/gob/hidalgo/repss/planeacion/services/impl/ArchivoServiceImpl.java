@@ -6,9 +6,7 @@ import mx.gob.hidalgo.repss.planeacion.model.Persona;
 import mx.gob.hidalgo.repss.planeacion.model.User;
 import mx.gob.hidalgo.repss.planeacion.repositories.ArchivoRepository;
 import mx.gob.hidalgo.repss.planeacion.repositories.PersonaRepository;
-import mx.gob.hidalgo.repss.planeacion.services.ArchivoService;
-import mx.gob.hidalgo.repss.planeacion.services.PathWebService;
-import mx.gob.hidalgo.repss.planeacion.services.PersonaService;
+import mx.gob.hidalgo.repss.planeacion.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -27,6 +25,9 @@ public class ArchivoServiceImpl implements ArchivoService {
     @Autowired
     PersonaRepository personaRepository;
 
+    @Autowired
+    StorageImageService storageImageServices;
+
     @Override
     public Map<String, Object> createArchivo(Map<String, String> archivoMap, User admin) {
         Archivo archivo = convertMapToArchivo(archivoMap);
@@ -36,6 +37,8 @@ public class ArchivoServiceImpl implements ArchivoService {
 
     @Override
     public void deleteArchivo(Long idArchivo) {
+        Archivo archivo = archivoRepository.findOne(idArchivo);
+        storageImageServices.deleteImage(archivo.getNombre(), FileOrigin.getEnum(archivo.getId()));
         archivoRepository.delete(idArchivo);
     }
 
@@ -74,7 +77,7 @@ public class ArchivoServiceImpl implements ArchivoService {
         Departamento depto = new Departamento();
         depto.setId(Long.valueOf(archivoMap.get(PROPERTY_DEPTO_ID)));
         archivo.setDepartamento(depto);
-        archivo.setFechaRegistro(new Date(Long.valueOf(archivoMap.get(PROPERTY_FECHA_REGISTRO))));
+        archivo.setFechaRegistro(new Date());
 
         return archivo;
     }

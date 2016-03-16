@@ -3,12 +3,13 @@ define([
     'backbone',
     'core/BaseView',
     'models/PerfilModel',
+    'models/FileModel',
     'views/private/util/ModalGenericView',
     'views/private/perfil/FilesView',
     'collections/FilesCollection',
     'text!templates/private/perfil/tplPerfilAdmin.html',
     'Session'
-], function($, Backbone, BaseView, PerfilModel,
+], function($, Backbone, BaseView, PerfilModel, FileModel,
             ModalGenericView, FilesView, FilesCollection,
             tplPerfilAdmin, Session){
 
@@ -16,8 +17,10 @@ define([
         template: _.template(tplPerfilAdmin),
 
         events: {
-            'click #btn-upload'     : 'uploadFile',
-            'click .menu-action'    : 'opcionMenu'
+            'click #btn-upload'         : 'uploadFile',
+            'click .menu-action'        : 'opcionMenu',
+            'click #btn-exit'           : 'logout',
+            'change #file-es'           : 'changeFile'
         },
 
         initialize: function() {
@@ -36,6 +39,33 @@ define([
         },
 
         uploadFile: function(){
+            this.$el.find('#file-es').click();
+        },
+
+        changeFile: function(event) {
+            var that = this;
+            var fileup = $('#file-es')[0].files[0];
+            var data = new FormData();
+            data.append('fileupload', fileup);
+            data.append('idDepto', this.model.get('deptoId'));
+            data.append('username', this.model.get('username'));
+
+            $.ajax({
+                url: 'file/upload/generic',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function(data){
+                    var fileModel = new FileModel(data);
+                    new ModalGenericView({message: 'Operación realizada con éxito'});
+                    that.files.add(fileModel);
+                },
+                error: function(data){
+                    new ModalGenericView({message: 'Se presentó un error, vuelva a intentar'});
+                }
+            });
         },
 
         agregarFile: function(modelo){
@@ -59,6 +89,12 @@ define([
         },
 
         opcionMenu: function(event) {
+        },
+
+        logout: function(){
+            Session.logout(function(response){
+                Backbone.history.navigate('', { trigger : true });
+            });
         }
 
     });

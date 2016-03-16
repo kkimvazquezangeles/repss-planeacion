@@ -1,5 +1,6 @@
 package mx.gob.hidalgo.repss.planeacion.controller;
 
+import mx.gob.hidalgo.repss.planeacion.model.User;
 import mx.gob.hidalgo.repss.planeacion.services.*;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,18 +26,15 @@ import java.util.Map;
 public class FileUploadController {
 
     @Autowired
-    PathWebService pathWebService;
-
-    @Autowired
     StorageImageService storageImageServices;
 
     @Autowired
-    PersonaService personaService;
+    ArchivoService archivoService;
 
-    @RequestMapping(value = "/upload/foto", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload/generic", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, String> addFileFoto(HttpServletRequest request, HttpServletResponse response,
-                                       @RequestParam("id") Long id, @RequestParam("origin") String origin) throws IOException {
+    public Map<String, Object> addFileGeneric(HttpServletRequest request, HttpServletResponse response,
+                                           @RequestParam("idDepto") Long idDepto, @RequestParam("username") String username) throws IOException {
         if (!ServletFileUpload.isMultipartContent(request)) {
 
             if (!(request instanceof StandardMultipartHttpServletRequest)){
@@ -45,22 +43,22 @@ public class FileUploadController {
         }
 
         StandardMultipartHttpServletRequest dmhsRequest = (StandardMultipartHttpServletRequest) request ;
-        MultipartFile file = (MultipartFile) dmhsRequest.getFile("filelogo");
+        MultipartFile file = (MultipartFile) dmhsRequest.getFile("fileupload");
 
-        Map<String, String> result = new HashMap<>();
+        Map<String, Object> result = new HashMap<>();
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
-
-                String nameLogo = getValidNameLogo(file.getOriginalFilename(), id);
-
-                OriginPhoto originPhoto = OriginPhoto.valueOf(origin);
-                storageImageServices.writeImage(bytes, nameLogo, originPhoto);
-
+                FileOrigin fileOrigin = FileOrigin.getEnum(idDepto);
+                storageImageServices.writeImage(bytes, file.getOriginalFilename(), fileOrigin);
+                User user = new User();
+                user.setUsername(username);
+                Map<String, String> archivoMap = new HashMap<>();
+                archivoMap.put(ArchivoService.PROPERTY_NOMBRE, file.getOriginalFilename());
+                archivoMap.put(ArchivoService.PROPERTY_DEPTO_ID, String.valueOf(idDepto));
+                result = archivoService.createArchivo(archivoMap, user);
 
                 result.put("result", "success");
-                result.put("pathfilename", pathWebService.getValidPathWebFoto(nameLogo, OriginPhoto.valueOf(origin)));
-                result.put("filename", nameLogo);
             } catch (Exception e) {
                 result.put("result", "fail");
             }
@@ -78,8 +76,8 @@ public class FileUploadController {
             throws IOException {
         Map<String, String> result = new HashMap<>();
 
-        OriginPhoto originPhoto = OriginPhoto.valueOf(origin);
-        storageImageServices.deleteImage(foto, originPhoto);
+        FileOrigin fileOrigin = FileOrigin.valueOf(origin);
+        storageImageServices.deleteImage(foto, fileOrigin);
 
         result.put("result", "success");
         result.put("defaultname", PathPhoto.JUGADOR_DEFAULT.getPath());
