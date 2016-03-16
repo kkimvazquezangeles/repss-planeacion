@@ -34,7 +34,7 @@ spring:
 
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://    ec2-107-21-221-107.compute-1.amazonaws.com:5432/d7g8hai0qakg0o?sslmode=require
+    url: jdbc:postgresql://ec2-107-21-221-107.compute-1.amazonaws.com:5432/d7g8hai0qakg0o?sslmode=require
     username: jgjsiqdcqdoycp
     password: BRACL6CRuTFvx0c-vlyu6OfkMc
 
