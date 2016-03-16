@@ -28,8 +28,14 @@ define([
 				success:function(model, response) {
 					Session.set('authenticated', true);
 					Session.set('username', user);
+					Session.set('roles', model.get('roles'));
 					if (remember) {
-						$.cookie('auth_token', JSON.stringify({username: user, token: model.get('token')}));
+						$.cookie('auth_token',
+						    JSON.stringify({
+						        username: user,
+						        token: model.get('token'),
+						        roles: model.get('roles')
+						    }));
 					}
 
 					$.ajaxSetup({
@@ -43,6 +49,7 @@ define([
 				error: function(model, error) {
 					Session.set('authenticated', false);
 					Session.set('username', '');
+					Session.set('roles', []);
                     $.removeCookie('auth_token')
                     $('#msg-error').show();
 				}
@@ -65,6 +72,7 @@ define([
 						}
 					});
                     Session.set('username', '');
+                    Session.set('roles', []);
                     $.removeCookie('auth_token')
 					console.log('Successfully saved!');
 					that();

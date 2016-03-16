@@ -26,7 +26,8 @@ define([
             'token/:token':                 'token',
             'change/:token':                'changeToken',
             'admin':                        'admin',
-            'admin/perfil':                 'adminPerfil'
+            'admin/perfil':                 'adminPerfil',
+            'menu':                         'menu'
         },
 
         requresAuth : ['#admin'],
@@ -111,6 +112,11 @@ define([
         adminPerfil: function() {
             var view = new PerfilAdminView();
             this.changeView(view);
+        },
+
+        menu: function() {
+             var view = new MenuView();
+             this.changeView(view);
         }
 	});
 

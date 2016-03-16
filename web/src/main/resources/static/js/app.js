@@ -17,6 +17,7 @@ define([
             if ($.cookie('auth_token') === undefined) { // this line is the problem
                 $.ajaxSettings.headers = [];
                 Session.set('authenticated', false);
+                Session.set('roles', '');
             } else {
                 var user = JSON.parse($.cookie('auth_token'));
                 $.ajaxSetup({
@@ -26,6 +27,7 @@ define([
                 });
                 Session.set('authenticated', true);
                 Session.set('username', user.username);
+                Session.set('roles', user.roles);
             }
 
             var router = new Router();
@@ -48,6 +50,7 @@ define([
                         // Redirec the to the login page.
                         Session.set('authenticated', false);
                         Session.set('username', '');
+                        Session.set('roles', '');
                         $.removeCookie('auth_token')
                         if ($.ajaxSettings.headers["X-Auth-Token"] !== 'undefined') {
                             delete $.ajaxSettings.headers["X-Auth-Token"];
@@ -59,6 +62,7 @@ define([
                         // 403 -- Access denied
                         Session.set('authenticated', false);
                         Session.set('username', '');
+                        Session.set('roles', '');
                         $.removeCookie('auth_token')
                         if ($.ajaxSettings.headers["X-Auth-Token"] !== 'undefined') {
                             delete $.ajaxSettings.headers["X-Auth-Token"];

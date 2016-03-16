@@ -8,13 +8,16 @@ define([
     'collections/FilesCollection',
     'text!templates/private/perfil/tplPerfilAdmin.html',
     'Session'
-], function($, Backbone, BaseView, PerfilModel, ModalGenericView, FilesView, FilesCollection, tplPerfilAdmin, Session){
+], function($, Backbone, BaseView, PerfilModel,
+            ModalGenericView, FilesView, FilesCollection,
+            tplPerfilAdmin, Session){
 
     var PerfilAdminView = BaseView.extend({
         template: _.template(tplPerfilAdmin),
 
         events: {
-            'click #btn-upload' : 'uploadFile'
+            'click #btn-upload'     : 'uploadFile',
+            'click .menu-action'    : 'opcionMenu'
         },
 
         initialize: function() {
@@ -45,7 +48,17 @@ define([
 
         syncPerfil: function(){
             this.$el.html(this.template(this.model.toJSON()));
-            this.files.fetch();
+
+            var roles = Session.get('roles');
+            if(roles[0] !== 'ADMIN'){
+                $('#menu-container').hide();
+                this.files.fetch();
+            } else {
+                $('#grid-data').hide();
+            }
+        },
+
+        opcionMenu: function(event) {
         }
 
     });
