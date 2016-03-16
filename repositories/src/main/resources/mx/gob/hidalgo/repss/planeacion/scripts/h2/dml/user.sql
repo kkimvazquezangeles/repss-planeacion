@@ -1,41 +1,24 @@
 INSERT INTO USUARIO (USERNAME, PASSWORD, ENABLED) VALUES
-('jperez@tu.me', 'p4Ssword', 1),
-('jsoto', '$2a$10$GqqtbEuDi8YXzI1n8Zoqv.Upp61NP/Jy1fvPiMAgtcsyFuwc7N.AK', 1),
-('rolguin@grupobmv.com.mx', 'p4Ssword', 0),
-('sgarcia', '123456', 1),
-('jmolina', '123456', 1),
-('snaranjo', '123456', 1),
-('gduque', '123456', 1),
-('jsaenz', '123456', 1),
-('gloreto', '123456', 1),
-('omurillo', '123456', 1),
-('aosorno', '123456', 1),
-('cpalacio', '123456', 1),
-('hgonzalez', '123456', 1),
-('cmontoya', '123456', 1),
-('atabares', '123456', 1),
-('jlopez', '123456', 1);
+('alberto.xithe@hidalgo.gob.mx', 'Alberto11', 1),
+('joaquin.munive@hidalgo.gob.mx', 'Munive37', 1),
+('benjamin.mota@hidalgo.gob.mx', 'Benjam1n', 1),
+('alejandro.vazquez@hidalgo.gob.mx', 'Alevazquez5', 1),
+('luis.arevalo@hidalgo.gob.mx', 'Arevaloluis8', 1),
+('cabaedgu@hotmail.com', 'Edbarron32', 1),
+('mauricio.garcia.ramirez@gmail.com', '54Maugarcia', 1),
+('maribel.oviedo@hidalgo.gob.mx', '3Marioviedo', 1),
+('isaias.parra@hidalgo.gob.mx', '15Parraisais', 1),
+
 
 INSERT INTO USER_ROLE (ID, USERNAME, ROLE) VALUES
-(1, 'jperez@tu.me', 'ADMIN'),
-(2, 'jsoto', 'GERENTE'),
-(3, 'rolguin@grupobmv.com.mx', 'JUGADOR'),
-(4, 'sgarcia', 'JUGADOR'),
-(5, 'jmolina', 'JUGADOR'),
-(6, 'snaranjo', 'JUGADOR'),
-(7, 'gduque', 'JUGADOR'),
-(8, 'jsaenz', 'JUGADOR'),
-(9, 'gloreto', 'JUGADOR'),
-(10, 'omurillo', 'JUGADOR'),
-(11, 'aosorno', 'JUGADOR'),
-(12, 'cpalacio', 'JUGADOR'),
-(13, 'hgonzalez', 'JUGADOR'),
-(14, 'cmontoya', 'JUGADOR'),
-(15, 'atabares', 'JUGADOR'),
-(16, 'jlopez', 'JUGADOR');
+(1, 'alberto.xithe@hidalgo.gob.mx', 'Director'),
+(2, 'joaquin.munive@hidalgo.gob.mx', 'Director'),
+(3, 'benjamin.mota@hidalgo.gob.mx', 'Director'),
+(4, 'alejandro.vazquez@hidalgo.gob.mx', 'Director'),
+(5, 'luis.arevalo@hidalgo.gob.mx', 'Director'),
+(6, 'cabaedgu@hotmail.com', 'Director'),
+(7, 'mauricio.garcia.ramirez@gmail.com', 'Director'),
+(8, 'maribel.oviedo@hidalgo.gob.mx', 'ADMIN'),
+(9, 'isaias.parra@hidalgo.gob.mx', 'ADMIN'),
 
-INSERT INTO USER_TOKEN (TOKEN, USERNAME, TIPO, FECHA_VIGENCIA) VALUES
-('ae3594d9-caf8-4563-9498-7096a4f08b5e', 'rolguin@grupobmv.com.mx', 'VALID_EMAIL', TIMESTAMP '2050-02-18 14:25:00.000');
 
-INSERT INTO USER_TOKEN (TOKEN, USERNAME, TIPO, FECHA_VIGENCIA) VALUES
-('ae3594d9-caf8-4563-9498-7096a4f08b5w', 'rolguin@grupobmv.com.mx', 'CHANGE_PASSWORD', TIMESTAMP '2050-02-18 14:25:00.000');
