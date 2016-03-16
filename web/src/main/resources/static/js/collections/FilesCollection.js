@@ -5,7 +5,12 @@ define([
 
     var FilesCollection = Backbone.Collection.extend({
         model: FileModel,
-        url: 'archivo'
+        url: function() {
+            return 'archivo/depto/' + this.idDepto;
+        },
+        setIdDepto: function(idDepto){
+            this.idDepto = idDepto;
+        }
     });
 
 	return FilesCollection;

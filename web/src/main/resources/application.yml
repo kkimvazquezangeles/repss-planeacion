@@ -51,8 +51,8 @@ spring:
 lupa:
   web.pathPhoto: photo/
   service.google:
-    bucketName: lupa-logo
-    pathWeb: https://storage.googleapis.com/lupa-logo/
+    bucketName: repss-files
+    pathWeb: https://storage.googleapis.com/repss-files/
 
 ---
 spring:

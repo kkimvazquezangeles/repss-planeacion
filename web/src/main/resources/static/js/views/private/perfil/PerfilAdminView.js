@@ -82,6 +82,7 @@ define([
             var roles = Session.get('roles');
             if(roles[0] !== 'ADMIN'){
                 $('#menu-container').hide();
+                this.files.setIdDepto(this.model.get('deptoId'));
                 this.files.fetch();
             } else {
                 $('#grid-data').hide();
@@ -90,6 +91,10 @@ define([
 
         opcionMenu: function(event) {
             $('#grid-data').show();
+            this.files.reset();
+            $("#grid-data").find('tbody').html('');
+            this.files.setIdDepto($(event.currentTarget).attr('value'));
+            this.files.fetch();
         },
 
         logout: function(){

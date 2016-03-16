@@ -46,8 +46,7 @@ public class ArchivoServiceImpl implements ArchivoService {
     }
 
     @Override
-    public List<Map<String, Object>> listArchivoByUserDepartamento(User admin) {
-        Departamento depto = personaRepository.findByAdmin(admin).getDepartamento();
+    public List<Map<String, Object>> listArchivoByDepartamento(Departamento depto) {
         Iterator<Archivo> itArchivo = archivoRepository.findAllByDepartamento(depto).iterator();
         List<Map<String, Object>> copy = new ArrayList<>();
         while (itArchivo.hasNext()) {

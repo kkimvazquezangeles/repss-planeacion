@@ -1,10 +1,10 @@
 package mx.gob.hidalgo.repss.planeacion.controller;
 
+import mx.gob.hidalgo.repss.planeacion.model.Departamento;
 import mx.gob.hidalgo.repss.planeacion.model.User;
 import mx.gob.hidalgo.repss.planeacion.services.ArchivoService;
 import mx.gob.hidalgo.repss.planeacion.services.GeneralService;
 import mx.gob.hidalgo.repss.planeacion.services.PersonaService;
-import mx.gob.hidalgo.repss.planeacion.services.impl.DeleteStatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -43,11 +43,13 @@ public class ArchivoController {
 
     @ResponseBody
     @RequestMapping(
-            value = { "" },
+            value = { "/depto/{depto}" },
             method = {RequestMethod.GET},
             produces = {"application/json;charset=UTF-8"})
-    public List<Map<String, Object>> listJugadorByUser(User user) {
-        return archivoService.listArchivoByUserDepartamento(user);
+    public List<Map<String, Object>> listJugadorByUser(@PathVariable("depto") Long idDepartamento) {
+        Departamento depto = new Departamento();
+        depto.setId(idDepartamento);
+        return archivoService.listArchivoByDepartamento(depto);
     }
 
     @ResponseBody

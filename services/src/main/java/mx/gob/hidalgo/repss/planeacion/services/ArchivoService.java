@@ -1,5 +1,6 @@
 package mx.gob.hidalgo.repss.planeacion.services;
 
+import mx.gob.hidalgo.repss.planeacion.model.Departamento;
 import mx.gob.hidalgo.repss.planeacion.model.User;
 
 import java.util.List;
@@ -23,5 +24,5 @@ public interface ArchivoService {
 
     void deleteArchivo(Long idArchivo);
 
-    List<Map<String,Object>> listArchivoByUserDepartamento(User user);
+    List<Map<String,Object>> listArchivoByDepartamento(Departamento departamento);
 }
