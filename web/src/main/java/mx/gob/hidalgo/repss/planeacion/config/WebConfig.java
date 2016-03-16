@@ -1,12 +1,15 @@
 package mx.gob.hidalgo.repss.planeacion.config;
 
 import mx.gob.hidalgo.repss.planeacion.services.PathWebService;
+import org.springframework.boot.context.embedded.MultipartConfigFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.config.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.MultipartConfigElement;
 
 /**
  * Created by kkimvazquezangeles on 28/11/14.
@@ -41,5 +44,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         configurer.favorPathExtension(false);
         configurer.defaultContentType(MediaType.APPLICATION_JSON);
+    }
+
+    @Bean
+    MultipartConfigElement multipartConfigElement() {
+        MultipartConfigFactory factory = new MultipartConfigFactory();
+        factory.setMaxFileSize("10MB");
+        factory.setMaxRequestSize("10MB");
+        return factory.createMultipartConfig();
     }
 }
