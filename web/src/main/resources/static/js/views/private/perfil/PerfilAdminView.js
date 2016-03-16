@@ -82,10 +82,12 @@ define([
             var roles = Session.get('roles');
             if(roles[0] !== 'ADMIN'){
                 $('#menu-container').hide();
+                $('#btn-upload').show();
                 this.files.setIdDepto(this.model.get('deptoId'));
                 this.files.fetch();
             } else {
                 $('#grid-data').hide();
+                $('#btn-upload').hide();
             }
         },
 
