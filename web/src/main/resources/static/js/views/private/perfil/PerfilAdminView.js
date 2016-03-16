@@ -93,8 +93,8 @@ define([
             $('#grid-data').show();
             this.files.reset();
             $("#grid-data").find('tbody').html('');
-            $('.menu-action').removeClass('menu-select');
-            $(event.currentTarget).addClass('menu-select');
+            $('.menu-action').parent().removeClass('menu-select');
+            $(event.currentTarget).parent().addClass('menu-select');
             this.files.setIdDepto($(event.currentTarget).attr('value'));
             this.files.fetch();
         },
