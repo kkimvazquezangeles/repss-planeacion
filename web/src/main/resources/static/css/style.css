@@ -260,12 +260,12 @@ div .icono {
 .menu td {
     border-width: .2em;
     border-color: #E8E8E8;
-    border-style: solid;
+    /* border-style: solid; */
     text-align: center;
     height: 2em;
     /* border-top-width: thick; */
     width: 5em;
-    padding: 1em;
+    padding: 1.2em;
     border-radius: 1em;
 }
 
@@ -276,6 +276,19 @@ div .icono {
 
 .hidden {
    display: none;
+}
+
+
+.menu-select {
+    border-width: .1em;
+    border-color: #E8E8E8;
+    border-style: solid;
+    text-align: center;
+    height: 2em;
+    border-top-width: thick;
+    width: 5em;
+    padding: 1.2em;
+    border-radius: 1em;
 }
 
 @media screen and (max-width: 1200px) {
