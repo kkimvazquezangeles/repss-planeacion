@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by kkimvazquezangeles on 11/05/15.
  */
-@Entity
+//@Entity
 public class Reporte {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="reporte_id_seq")

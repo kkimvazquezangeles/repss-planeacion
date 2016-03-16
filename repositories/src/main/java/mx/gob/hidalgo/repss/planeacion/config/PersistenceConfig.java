@@ -75,9 +75,9 @@ public class PersistenceConfig {
     @Profile({"test", "devbd"})
     public DataSource dataSourceDev() {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        builder.addScript("classpath:/mx/gob/hidalgo/repss/planeacion/scripts/h2/ddl/user.sql");
-        builder.addScript("classpath:/mx/gob/hidalgo/repss/planeacion/scripts/h2/ddl/sequence.sql");
-        builder.addScript("classpath:/mx/gob/hidalgo/repss/planeacion/scripts/h2/ddl/constraints.sql");
+        //builder.addScript("classpath:/mx/gob/hidalgo/repss/planeacion/scripts/h2/ddl/user.sql");
+        //builder.addScript("classpath:/mx/gob/hidalgo/repss/planeacion/scripts/h2/ddl/sequence.sql");
+        //builder.addScript("classpath:/mx/gob/hidalgo/repss/planeacion/scripts/h2/ddl/constraints.sql");
 
         return builder.setType(EmbeddedDatabaseType.H2).build();
     }
