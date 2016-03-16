@@ -39,19 +39,4 @@ public class PathWebGoogleCloudImpl implements PathWebService {
                 + PathPhoto.PHOTO_BASE.getPath() + pathBase + path;
         return pathFull;
     }
-
-    @Override
-    public String getValidPathWebLogo(String path, OrigenEstadistica origenEstadistica) {
-        String pathDefault = PathPhoto.EQUIPO_DEFAULT.getPath();
-        if (origenEstadistica != null) {
-            pathDefault = origenEstadistica == OrigenEstadistica.VISITA ?
-                    PathPhoto.EQUIPO_DEFAULT_VISITA.getPath() : PathPhoto.EQUIPO_DEFAULT_LOCAL.getPath();
-        }
-        if (path == null || path.isEmpty() || path.equals("novalid")) {
-            return pathDefault;
-        }
-        String pathFull = env.getRequiredProperty(PROPERTY_STATIC_GOOGLE_BUCKET_NAME)
-                + PathPhoto.PHOTO_BASE.getPath() + PathPhoto.EQUIPO_BASE.getPath() + path;
-        return pathFull;
-    }
 }

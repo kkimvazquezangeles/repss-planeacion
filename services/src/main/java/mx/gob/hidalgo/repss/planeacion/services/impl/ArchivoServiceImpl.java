@@ -28,6 +28,9 @@ public class ArchivoServiceImpl implements ArchivoService {
     @Autowired
     StorageImageService storageImageServices;
 
+    @Autowired
+    PathWebService pathWeb;
+
     @Override
     public Map<String, Object> createArchivo(Map<String, String> archivoMap, User admin) {
         Archivo archivo = convertMapToArchivo(archivoMap);
@@ -59,6 +62,7 @@ public class ArchivoServiceImpl implements ArchivoService {
         Map<String, Object> map = new HashMap<>();
         map.put(PROPERTY_ID, archivo.getId());
         map.put(PROPERTY_NOMBRE, archivo.getNombre());
+        map.put(PROPERTY_RUTA_NOMBRE, pathWeb.getValidPathWebFoto(archivo.getNombre(), FileOrigin.getEnum(archivo.getId())));
         map.put(PROPERTY_DEPTO_ID, archivo.getDepartamento().getId());
         map.put(PROPERTY_DEPTO_DES, archivo.getDepartamento().getNombre());
         map.put(PROPERTY_USER_ID, archivo.getPersona().getId());

@@ -12,6 +12,7 @@ public interface ArchivoService {
 
     String PROPERTY_ID                  = "id";
     String PROPERTY_NOMBRE              = "nombre";
+    String PROPERTY_RUTA_NOMBRE         = "rutaNombre";
     String PROPERTY_DEPTO_ID            = "deptoId";
     String PROPERTY_DEPTO_DES           = "deptoDes";
     String PROPERTY_USER_ID             = "userId";

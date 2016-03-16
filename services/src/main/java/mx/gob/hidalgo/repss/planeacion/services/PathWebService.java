@@ -10,6 +10,4 @@ public interface PathWebService {
     String PROPERTY_STATIC_FILE_PHOTO = "lupa.web.pathPhoto";
 
     String getValidPathWebFoto(String path, FileOrigin fileOrigin);
-
-    String getValidPathWebLogo(String path, OrigenEstadistica origenEstadistica);
 }
