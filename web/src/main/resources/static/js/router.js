@@ -8,20 +8,19 @@ define([
     'views/TokenValidateView',
     'views/TokenChangePassView',
 	'views/private/perfil/PerfilAdminView',
-	'views/FormularioView',
 	'views/private/MainAdminNavView',
 	'views/public/MainView',
     'views/public/MainNavView',
 	'Session'
 ], function($, _, Backbone, BaseRouter, LoginView, SignupView,
-            TokenValidateView, TokenChangePassView, PerfilAdminView, FormularioView,
+            TokenValidateView, TokenChangePassView, PerfilAdminView,
             MainAdminNavView, MainView, MainNavView, Session){
         var Router = BaseRouter.extend({
 
         routes: {
-            '':                             'formulario',
-            '/':                            'formulario',
-            '/#':                           'formulario',
+            '':                             'login',
+            '/':                            'login',
+            '/#':                           'login',
             'login':                        'login',
             'signup':                       'signup',
             'token/:token':                 'token',
@@ -81,11 +80,6 @@ define([
             var view = new MainView();
             this.changeView(view);
             new MainNavView();
-        },
-
-        formulario: function() {
-            var view = new FormularioView();
-            this.changeView(view);
         },
 
         login: function() {

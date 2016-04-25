@@ -24,6 +24,7 @@ public class UserServiceTest {
 
     @Test
     public void testFindByUsername() {
-        Assert.assertNull(null);
+        Map<String, Object> userMap = userService.findByUsername("alberto.xithe@hidalgo.gob.mx");
+        Assert.assertNotNull(userMap);
     }
 }

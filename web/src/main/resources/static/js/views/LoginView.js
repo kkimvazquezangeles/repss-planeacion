@@ -13,8 +13,7 @@ define([
         template: _.template(tplLogin),
 
         events: {
-            'click #btn-login': 'login',
-            'click #btn-cancelar': 'cancelar'
+            'click #btn-login': 'login'
         },
 
         initialize: function() {
@@ -45,10 +44,6 @@ define([
                 $('input[name=username]').addClass('has-error');
                 $('input[name=password]').addClass('has-error');
             }
-
-        },
-
-        cancelar: function(){
 
         }
 

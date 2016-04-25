@@ -8,5 +8,5 @@ import org.springframework.data.repository.CrudRepository;
  * Created by kkimvazquezangeles on 22/05/15.
  */
 public interface PersonaRepository extends CrudRepository<Persona, Long> {
-    //Persona findBy(User admin);
+    Persona findByAdmin(User admin);
 }

@@ -1,7 +1,5 @@
 package mx.gob.hidalgo.repss.planeacion.model;
 
-import org.springframework.format.annotation.NumberFormat;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,22 +8,21 @@ import java.util.Date;
  */
 @Entity
 public class Persona {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="persona_id_seq")
     @SequenceGenerator(name="persona_id_seq", sequenceName="persona_id_seq")
     private Long id;
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User admin;
+    @ManyToOne
+    @JoinColumn(name = "depto_id", nullable = false)
+    private Departamento departamento;
     private String nombre;
     private String paterno;
     private String materno;
-    @Column(name = "correo_electronico")
-    private String correoElectronico;
-    private String telefono;
     @Column(name = "fecha_registro")
     private Date fechaRegistro;
-    @ManyToOne
-    @JoinColumn(name = "localidad_id", nullable = false)
-    private Localidad localidad;
 
     public Long getId() {
         return id;
@@ -33,6 +30,22 @@ public class Persona {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public User getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(User admin) {
+        this.admin = admin;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
 
     public String getNombre() {
@@ -59,36 +72,12 @@ public class Persona {
         this.materno = materno;
     }
 
-    public String getCorreoElectronico() {
-        return correoElectronico;
-    }
-
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
     public Date getFechaRegistro() {
         return fechaRegistro;
     }
 
     public void setFechaRegistro(Date fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
-    }
-
-    public Localidad getLocalidad() {
-        return localidad;
-    }
-
-    public void setLocalidad(Localidad localidad) {
-        this.localidad = localidad;
     }
 
     public String getNombreCompleto() {
@@ -99,14 +88,12 @@ public class Persona {
     public String toString() {
         return "Persona{" +
                 "id=" + id +
+                ", admin=" + admin +
+                ", departamento=" + departamento +
                 ", nombre='" + nombre + '\'' +
                 ", paterno='" + paterno + '\'' +
                 ", materno='" + materno + '\'' +
-                ", correoElectronico=" + correoElectronico + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", fechaRegistro=" + fechaRegistro + '\'' +
-                ", localidad='" + localidad +
+                ", fechaRegistro=" + fechaRegistro +
                 '}';
     }
-
 }
