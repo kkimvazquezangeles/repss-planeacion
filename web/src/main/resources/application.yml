@@ -5,7 +5,7 @@ server:
 security.basic.enabled: false
 endpoints.shutdown.enabled: true
 
-spring.profiles.active: preprobd
+spring.profiles.active: localmysql
 spring.profiles.include: googlestorage,devmail
 
 ---
@@ -16,6 +16,27 @@ spring:
     showSql: true
     dataBase: H2
     hibernate.generateDdl: true
+
+backend:
+  admin:
+    username: backendadmin
+    password: betuzo
+    backend.admin.role: BACKEND_ADMIN
+
+---
+spring:
+  profiles: localmysql
+
+  jpa:
+    showSql: true
+    dataBase: MYSQL
+    hibernate.generateDdl: true
+
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/planeacionftp
+    username: root
+    password: MyNewPass
 
 backend:
   admin:

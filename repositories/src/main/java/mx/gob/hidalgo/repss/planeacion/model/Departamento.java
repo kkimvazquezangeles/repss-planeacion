@@ -9,7 +9,7 @@ import java.util.Date;
 @Entity
 public class Departamento {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="departamento_id_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="departamento_id_seq")
     @SequenceGenerator(name="departamento_id_seq", sequenceName="departamento_id_seq")
     private Long id;
     private String nombre;

@@ -9,7 +9,7 @@ import java.util.List;
 //@Entity
 public class Reporte {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="reporte_id_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="reporte_id_seq")
     @SequenceGenerator(name="reporte_id_seq", sequenceName="reporte_id_seq")
 
     private Long id;
